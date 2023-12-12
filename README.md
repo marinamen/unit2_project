@@ -1,6 +1,7 @@
 
 <img src="https://github.com/marinamen/unit2_project/blob/main/images/funny-luxurious-paragliding-63q706iov1yzal2m.gif" width=100% height=100%>
 
+*Figure 1 (https://gifdb.com/paragliding)*
 
 # Unit 2: A Distributed Weather Station for ISAK
 
@@ -8,14 +9,17 @@
 
 <img src="https://github.com/marinamen/unit2_project/blob/main/images/download.png" width=10% height=10%>
 
+*Figure 2*
+
 ## Criteria A: Planning
 
 ## Problem definition
 
-Our client, a local Karuizawa paraglider, seeks safe storage for their equipment, aware that diverse temperature and humidity levels impact storage safety. Employing an Arduino-powered DHT11 sensor, our mission is to precisely measure temperature and humidity. The aim is to advise the client on the suitability of their paragliding storage within the storage room of their Karuizawa house based on these measurements.
+*Our client, a local Karuizawa paraglider, seeks safe storage for their equipment, aware that diverse temperature and humidity levels impact storage safety. Employing an Arduino-powered DHT11 sensor, our mission is to precisely measure temperature and humidity. The aim is to advise the client on the suitability of their paragliding storage within the storage room of their Karuizawa house based on these measurements.*
 
-<img src="https://github.com/marinamen/unit2_project/blob/main/images/download%20(1).png" width=30% height=30%>
+<img src="https://github.com/marinamen/unit2_project/blob/main/images/download%20(1).png" width=10% height=10%>
 
+*Figure 3*
 
 
 ## Proposed Solution
@@ -25,7 +29,7 @@ Considering the budgetary constrains of the client and the hardware requirements
 
 **Design statement**
 
-``` Fill out here```
+*Our team is developing a program using Arduino and DHT_11 sensors to monitor room humidity and temperature, vital for a paragliding client's equipment storage. Data will be uploaded in real-time to a server for 48 hours and accessed through a secure login. This reliable, validated system aims to complete within four weeks, meeting our client's needs for optimal storage conditions.*
 
 ## Success Criteria
 
