@@ -159,9 +159,18 @@ _TOK Connection: To what extent does ```the use of data science``` in climate re
 
 
 ## 4.Client Requested two copies of Data Collected, one in a local CSV and the second uploaded realtime to API Server.
-## 5.Client Requested a 12 hour prediction sampled from the Data Collected the previous 48 hours
+
+
+## 5.Client Requested a 12 hour prediction sampled from the Data Collected the previous 48 hours.
+
 ## 6.Client Requested a visual representation of Data collected, both locally and remotely.
+
+
+
+
 ## 7.Client Requested a deep research onto Paragliding equipment storage viable conditions
+
+
 # Criteria D: Functionality
 
 A 7 min video demonstrating the proposed solution with narration
