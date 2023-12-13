@@ -113,16 +113,55 @@ _TOK Connection: To what extent does ```the use of data science``` in climate re
 | Non-functional: Response time     | Testing if the sensor responds quickly to the running program and see how long it takes for the sensor to register and print out the current temperature and humidity                                           | 1. Run the basic program that aims to print the current temperature and humidity the sensor collects.                                                                                                                                                                                                                                                                       | The program returns the swiftly returns the current temperature and humidity the sensor collects without any lag or delay.                                                                                                                                                                                                                                                |
 | Non-functional：Code review       | Reviewing if the code has adequate comments, function name, and variable name.As this reviews the quality of the code, there are no inputs.                                                                     | The procedure included a review of the code from a external developer who is not familiar with techniques used in it. The developer then gave feedback on which parts are not understandable and names of which variables are not logical when looking at the purpose of the variable.                                                                                      | The code will include comments explaining what is occuring within the code. Furthermore, the names of variables are simple and it is easy to understand what is their usage in the program     |                                                                                                                                
 
-## Test Plan    
+## Flow Chart
+*Simple*
+*Medium*
 <img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-13%20at%2011.50.20.png" width=50% height=50%>
-
+*Complex*
 # Criteria C: Development
 
 ## List of techniques used
+1.Functions
+
+2.Dictionaries & Lists
+
+3.For loops
+
+4.While loops
+
+5.Try and Accept Commands
+
+6.File reading
+
+7.Modifying CSV files
+
+8.Registering and Login into API
+
+9.Sending data to API servers
+
+10.Accessing API data and reading
+
+11.Use of Matplotlib Library and Modificiations
+
+12. Use of Requests Library
 
 ## Development
+## 1.Client Requested use of 3 sensors placed in different locations within the chosen Room
 
 
+
+## 2.Client Requested mathematical representations of the data collected, both the local and remote data collected
+
+
+
+## 3.Client Requested a program that worked under low connection to network without major malfunctioning
+
+
+
+## 4.Client Requested two copies of Data Collected, one in a local CSV and the second uploaded realtime to API Server.
+## 5.Client Requested a 12 hour prediction sampled from the Data Collected the previous 48 hours
+## 6.Client Requested a visual representation of Data collected, both locally and remotely.
+## 7.Client Requested a deep research onto Paragliding equipment storage viable conditions
 # Criteria D: Functionality
 
 A 7 min video demonstrating the proposed solution with narration
