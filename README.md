@@ -120,6 +120,7 @@ _TOK Connection: To what extent does ```the use of data science``` in climate re
 <img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-13%20at%2011.50.20.png" width=75% height=75%>
 Figure 4: The flow diagram above illustrates the program that is downloaded to the Arduino in C++ code. The program defines the three DHT11 sensors as output devices. Since there aren’t three five-volt outputs pin 12 is set to high to keep sensor 1 powered. It then registers each sensor to allocated ports (4, 7, and 13). The data from the sensors is then collected every five minutes and is displayed in the serial monitor before repeating. 
 
+
 <img width="517" alt="Screenshot 2023-12-13 at 6 05 40 PM" src="https://github.com/marinamen/unit2_project/assets/142757998/a22a46b2-1c7a-4565-97aa-ea44dca1e8fe">
 
 Figure 5: The flow diagram above illustrates the Python function that retrieves sensor data from the local server. The function uses a known sensor ID value to take that sensor's specific values. It requests the sensor readings from the API using the IP and HTTP get from the server. It creates a dictionary with the readings as the key and an empty list. Then for every value in the sensor readings, it appends the data ti the corresponding list in the dictionary. Finally, if there are no values left it returns the list.
