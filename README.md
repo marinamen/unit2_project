@@ -1,7 +1,15 @@
 
+
+   
 <img src="https://github.com/marinamen/unit2_project/blob/main/images/funny-luxurious-paragliding-63q706iov1yzal2m.gif" width=100% height=100%>
 
 *Figure 1 (https://gifdb.com/paragliding)*
+ 
+   ༘⋆ ❅ ･:*:｡ ❆༄༄
+   
+   *weather station*
+   
+   ༘⋆ ❅ ･:*:｡ ❆༄༄
 
 # Unit 2: A Distributed Weather Station for ISAK
 
@@ -155,7 +163,7 @@ Figure 5: The flow diagram above illustrates the Python function that retrieves 
 ## Development
 ## 1.Client Requested use of 3 sensors placed in different locations within the chosen Room
 
-
+<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2001.20.36.png" width=35% height=35%>
 
 ## 2.Client Requested mathematical representations of the data collected, both the local and remote data collected
 
@@ -175,8 +183,26 @@ Figure 5: The flow diagram above illustrates the Python function that retrieves 
 
 
 
-## 7.Client Requested a deep research onto Paragliding equipment storage viable conditions
+## 7.Login and Register System
 
+The UWC ISAK Weather Station Server operates under specific rules and terminations. 
+
+Our code implementation involved several steps: initially, we registered a new user and established a password. 
+```.py
+def register(ip="192.168.6.153",):
+  new_user = {'username': '#####', 'password':'#####'}
+  req = requests.post(url+"/register", json=new_user)
+  print(req.json())
+```
+Following this, we logged into the server using the newly created credentials
+
+```.py
+def serverLogin(ip="192.168.6.153", user={"username": "keelarina", "password": "iloveroky"}):
+    req = requests.post(f"http://{ip}/login", json=user)
+    print(req.json())
+    cookie = req.json()["access_token"]
+    return {"Authorization": f"Bearer {cookie}"}
+```
 
 # Criteria D: Functionality
 
