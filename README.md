@@ -116,7 +116,9 @@ _TOK Connection: To what extent does ```the use of data science``` in climate re
 ## Flow Chart
 *Simple*
 *Medium*
+
 <img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-13%20at%2011.50.20.png" width=50% height=50%>
+Figure 3, The flow diagram above illustrates the program that is downloaded to the Arduino in C++ code. The program defines the three DHT11 sensors as output devices. Since there aren’t three five-volt outputs pin 12 is set to high to keep sensor 1 powered. It then registers each sensor to allocated ports (4, 7, and 13). The data from the sensors is then collected every five minutes and is displayed in the serial monitor before repeating. 
 *Complex*
 # Criteria C: Development
 
