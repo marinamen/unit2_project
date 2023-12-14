@@ -280,7 +280,7 @@ def serverLogin(ip="192.168.6.153", user={"username": "keelarina", "password": "
     cookie = req.json()["access_token"]
     return {"Authorization": f"Bearer {cookie}"}
 ```
-
+<img src =https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2010.32.10%20AM.png >
 # Criteria D: Functionality
 
 A 7 min video demonstrating the proposed solution with narration
