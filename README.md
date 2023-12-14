@@ -161,11 +161,69 @@ Figure 5: The flow diagram above illustrates the Python function that retrieves 
 12. Use of Requests Library
 
 ## Development
-## 1.Client Requested use of 3 sensors placed in different locations within the chosen Room
+## 1.Client Requested use of 3 sensors placed in different locations within the chosen Room.
+
+In response to the client's request for comprehensive temperature and humidity monitoring within a designated room, we strategically deployed three DHT11 sensors at varied locations to ensure a broad and precise data collection. The DHT11 sensors, known for their reliability in measuring temperature and humidity, were placed in distinct parts of the room to capture environmental variations effectively.
+
+Sensor Placement and Rationale:
+
+*Sensor 1:* Located near the entrance of the room, this sensor is positioned to capture the temperature and humidity levels that might be influenced by external factors, such as air coming in from outside the room.
+
+<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2001.20.36.png" width=35% height=35%>
+Fig1.1
+
+
+*Sensor 2:* Placed in the central part of the room, this sensor is intended to measure the average room conditions, providing a balanced view of the environmental factors at play within the space.
+
+<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2001.20.30.png" width=35% height=35%>
+Fig.1.2
+
+
+*Sensor 3:* Situated near the window or another heat source, this sensor aims to detect any variations in temperature and humidity caused by sunlight or appliances, offering insights into how external elements can impact the room's climate.
+
+<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2001.20.26.png" width=35% height=35%>
+Fig.1.3
+
+
+
+
+**Photographic Documentation:**
+
+To complement our setup, we've included three photographs below, each depicting the precise location of one of the sensors. These images provide a visual reference to the strategic placement of the sensors, illustrating our methodical approach to capturing a comprehensive and accurate representation of the room's environmental conditions.
+
+**Purpose and Benefits:**
+
+This multi-sensor approach enables a thorough analysis of the room's microclimate. By comparing data from different parts of the room, we can identify patterns, anomalies, or environmental gradients, leading to more informed decisions about climate control and room utilization.
+Through this setup, we not only cater to the client's specific requirements but also enhance the overall accuracy and reliability of our environmental monitoring within the room.
+
+
+
+
+## 2.Client Requested mathematical representations of the data collected, both the local and remote data collected.
+
+>Our team fulfilled this request for the following: comparison of the humidity and temperature levels inside and outside the student room, prediction of humidity level during the subsequent 12 hour period after the recordings took place. We did this in 2 differing methods:
+
+The development of the part of the program that fulfilled this criteria was first decomposed into 2 parts. Showing relations using mathematical modeling, and showing predictions using mathematical modeling. The code for the relations between data (Code 1.3) was developed by decomposing it into two subplots showing the relation between humidities and temperatures separately. Quadratic formula was aquired using np.polyfit and then put into an algorithm which would collect it into the list allowing the cretion of non-linear graphs.
+The first is shown below, we
+
+The development of the part of the program that fulfilled this criteria was first decomposed into 2 parts. Showing relations using mathematical modeling, and showing predictions using mathematical modeling. The code for the relations between data (Code 1.3) was developed by decomposing it into two subplots showing the relation between humidities and temperatures separately. Quadratic formula was aquired using np.polyfit and then put into an algorithm which would collect it into the list allowing the cretion of non-linear graphs.
+
+<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2008.08.08.png" width=65% height=65%>
+Fig2.1 Displays the subsequent 12 hour Linear prediction for the Indoor Temperature
+
+
+<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2008.07.59.png" width=35% height=35%>
+Fig2.2 Displays the subsequent 12 hour using Polynomial fitting at 3rd degree for the Outdoor Humidity
+
+
+<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2008.08.42.png" width=35% height=35%>
+
+*Fig.3.6*
 
 <img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2001.20.36.png" width=35% height=35%>
 
-## 2.Client Requested mathematical representations of the data collected, both the local and remote data collected
+*Fig.3.7*
+<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2001.20.36.png" width=35% height=35%>
 
 
 
