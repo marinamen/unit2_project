@@ -174,6 +174,83 @@ Figure 5: The flow diagram above illustrates the Python function that retrieves 
 
 
 ## 4.Client Requested two copies of Data Collected, one in a local CSV and the second uploaded realtime to API Server.
+To ensure that the data from the indoor sensors is saved, the client requested that the data be kept in a CSV along with being uploaded to a local server API. Using the library date time we can track every time mark it uploads to the server. We did this by creating a user with the local server and gaining a cookie access token. The cookie allowed us to add data to the server. The purpose of using a cookie to log in was to maintain security and prevent unauthorized access. This Figure (_) Next, we implemented a while loop in our program to continuously check for data from the Arduino. The data was decoded using a UTF 8 decoder that utilized the ASCII table.Figure(_) The program then used an if statement to check if the line contained any sensor data. The sensor data under the sensor ID was then stored in a dictionary where the keys were the sensor number, and the values were Temperature and Humidity. Now, using an if statement, for every sensor data length equal to three. The values of that sensor were put into the local server under that sensor ID, along with the sensor values being appended to the CSV file and with time stamps. Once those values are put into the server/CSV the dictionary resets and takes the next line of data from the Ardunio. See Figure(_)
+
+
+
+Figure (_)
+```.py
+user = {'username':"keelarina","password":"iloveroky"}
+#login
+
+
+answer = requests.post(f'http://{ip}/login', json=user)
+print(answer.json())
+cookie = answer.json()["access_token"]
+```
+Figure (_)
+```.py
+while line <= samples:
+ 
+   # Reads data from the serial port that connected to the Ardunio
+   data = ser.readline()
+
+
+   # Decodes the binary data into a string using UTF-8 
+   decoded_data = data.decode('utf-8', errors='ignore').strip()
+
+
+   # Prints decoded data
+   print(decoded_data)
+```
+Figure(_)
+```.py
+if len(sensor_data) == 3:
+   with open(fileName, "a") as file:
+       file.write(f"{sensor_data['1'][0]},{sensor_data['1'][1]},"
+                  f"{sensor_data['2'][0]},{sensor_data['2'][1]},"
+                  f"{sensor_data['3'][0]},{sensor_data['3'][1]},"
+                  f"{datetime.datetime.now()}\n")
+   answer = requests.post(f'http://{ip}/login', json=user)
+   print(answer.json())
+   cookie = answer.json()["access_token"]
+
+
+   record = {'sensor_id': 80, 'value': f"{sensor_data['1'][0]}"}
+   answer = requests.post(f'http://{ip}/reading/new',
+                          json=record,
+                          headers={'Authorization': f'Bearer {cookie}'})
+   record = {'sensor_id': 75, 'value': f"{sensor_data['1'][1]}"}
+   answer5 = requests.post(f'http://{ip}/reading/new',
+                          json=record,
+                          headers={'Authorization': f'Bearer {cookie}'})
+   print(answer5.json())
+   record = {'sensor_id': 76, 'value': f"{sensor_data['2'][0]}"}
+   answer1 = requests.post(f'http://{ip}/reading/new',
+                          json=record,
+                          headers={'Authorization': f'Bearer {cookie}'})
+   print(answer1.json())
+   record = {'sensor_id': 77, 'value': f"{sensor_data['2'][1]}"}
+   answer2 = requests.post(f'http://{ip}/reading/new',
+                          json=record,
+                          headers={'Authorization': f'Bearer {cookie}'})
+   print(answer2.json())
+   record = {'sensor_id': 78, 'value': f"{sensor_data['3'][0]}"}
+   answer3 = requests.post(f'http://{ip}/reading/new',
+                          json=record,
+                          headers={'Authorization': f'Bearer {cookie}'})
+   print(answer3.json())
+   record = {'sensor_id': 79, 'value': f"{sensor_data['3'][1]}"}
+   answer4 = requests.post(f'http://{ip}/reading/new',
+                          json=record,
+                          headers={'Authorization': f'Bearer {cookie}'})
+   print(answer4.json())
+
+
+   # Resets the dictionary
+   sensor_data = {}
+```
+Figure(_): What the CSV FILE looked like
 
 
 ## 5.Client Requested a 12 hour prediction sampled from the Data Collected the previous 48 hours.
