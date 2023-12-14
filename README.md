@@ -228,6 +228,35 @@ Fig2.2 Displays the subsequent 12 hour using Polynomial fitting at 3rd degree fo
 
 
 ## 3.Client Requested a program that worked under low connection to network without major malfunctioning
+Since the program needed to run under low connection to the network without malfunctioning. We implemented some safe fails. So that if the network doesn’t work or the server times out the data has multipletries to upload the data. To make sure the data is configured correctly the code and not data points are missing we use try and except command. The try tests to make sure the decoded data string is a valid float. If it is valid the program continues. If it doesn’t it excepts the value error and prints that the line is in an invalid data line then continues pulling up the next line. Figure(4.1) To make sure the server doesn’t time out after logging in once we implemented within the if statement the login cookie again so that if the device has lost connection with the server, it can reconnect before appending the sensor data. Figure(4.2)
+
+Figure (4.1) Checks if there is an invalid data format from the decode Ardunio data and skips that line or continues the program
+```.py
+try:
+   temperature = float(decoded_data[temperature_start:temperature_end].strip())
+   humidity = float(decoded_data[humidity_start:humidity_end].strip())
+except ValueError:
+   print("Invalid data format. Skipping line.")
+   continue
+```
+Figure (4.2) Part of the code that Appends data specifically the part where the failsafe reconnect to the server is
+```.py
+if len(sensor_data) == 3:
+   with open(fileName, "a") as file:
+       file.write(f"{sensor_data['1'][0]},{sensor_data['1'][1]},"
+                  f"{sensor_data['2'][0]},{sensor_data['2'][1]},"
+                  f"{sensor_data['3'][0]},{sensor_data['3'][1]},"
+                  f"{datetime.datetime.now()}\n")
+   answer = requests.post(f'http://{ip}/login', json=user)
+   print(answer.json())
+   cookie = answer.json()["access_token"]
+
+
+   record = {'sensor_id': 80, 'value': f"{sensor_data['1'][0]}"}
+   answer = requests.post(f'http://{ip}/reading/new',
+                          json=record,
+                          headers={'Authorization': f'Bearer {cookie}'})
+```
 
 
 
