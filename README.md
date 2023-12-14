@@ -213,33 +213,38 @@ Through this setup, we not only cater to the client's specific requirements but 
 
 ## 2.Client Requested mathematical representations of the data collected, both the local and remote data collected.
 
->Our team fulfilled this request for the following: comparison of the humidity and temperature levels inside and outside the student room, prediction of humidity level during the subsequent 12 hour period after the recordings took place. We did this in 2 differing methods:
+>Our team fulfilled this request for the following: comparison of the humidity and temperature levels inside and outside the student room, prediction of humidity level during the subsequent 12 hour period after the recordings took place.
 
-The development of the part of the program that fulfilled this criteria was first decomposed into 2 parts. Showing relations using mathematical modeling, and showing predictions using mathematical modeling. The code for the relations between data (Code 1.3) was developed by decomposing it into two subplots showing the relation between humidities and temperatures separately. Quadratic formula was aquired using np.polyfit and then put into an algorithm which would collect it into the list allowing the cretion of non-linear graphs.
-The first is shown below, we
+We used the polynomial regression modelling in two different ways, 1st degree (linear) and 2nd degree (polynomial)
 
-The development of the part of the program that fulfilled this criteria was first decomposed into 2 parts. Showing relations using mathematical modeling, and showing predictions using mathematical modeling. The code for the relations between data (Code 1.3) was developed by decomposing it into two subplots showing the relation between humidities and temperatures separately. Quadratic formula was aquired using np.polyfit and then put into an algorithm which would collect it into the list allowing the cretion of non-linear graphs.
+Below, the code performs a curve fitting operation using a polynomial model of degree 2 (degree = 2). It estimates the best-fit parameters `popt` and their covariance matrix `pcov` for the data in `averageTI` with respect to the independent variable `time_in_hours`. It initializes the parameter values with ones and attempts to find the optimal parameters for the quadratic polynomial model.
 
-<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2008.08.08.png" width=65% height=65%>
-Fig2.1 Displays the subsequent 12 hour Linear prediction for the Indoor Temperature
+```.py
+degree = 2
+popt, pcov = curve_fit(polynomial_model, time_in_hours, averageTI, p0=[1] * (degree + 1))
+```
+
+Next, `y_poly` computes polynomial values using optimized parameters popt for extended input `x_extended` using the `polynomial_model` function.
+```.py
+y_poly = polynomial_model(x_extended, *popt)
+```
+
+<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2001.20.36.png" width=65% height=65%>
+
+*Fig.2.1*
 
 
-<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2008.07.59.png" width=35% height=35%>
-Fig2.2 Displays the subsequent 12 hour using Polynomial fitting at 3rd degree for the Outdoor Humidity
+Next is the linear model,
 
+It runs through the same exact proccess but with a degree of 1
 
-<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2008.08.42.png" width=35% height=35%>
+<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2008.08.22.png" width=65% height=65%>
 
-*Fig.3.6*
-
-<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2001.20.36.png" width=35% height=35%>
-
-*Fig.3.7*
-<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2001.20.36.png" width=35% height=35%>
-
+*Fig.2.2*
 
 
 ## 3.Client Requested a program that worked under low connection to network without major malfunctioning
+
 Since the program needed to run under low connection to the network without malfunctioning. We implemented some safe fails. So that if the network doesn’t work or the server times out the conputer has multipletries to upload the data. To make sure the data is configured correctly and no data points are missing or formatted incorectly we use try and except function. The try tests to make sure the decoded data string is a valid float. If it is valid the program continues. If it doesn’t it excepts the value error and prints that the line is in an invalid data line then continues pulling up the next line [^8]. Figure(4.1) To make sure the server doesn’t time out after logging in once we implemented within the if statement the login cookie again so that if the device has lost connection with the server, it can reconnect before appending the sensor data. Figure(4.2) These both help the program run smoothly under a low connection and minimizes malfunctions.
 
 Figure (4.1) Checks if there is an invalid data format from the decode Ardunio data and skips that line or continues the program
@@ -523,7 +528,10 @@ def register(ip="192.168.6.153",):
   req = requests.post(url+"/register", json=new_user)
   print(req.json())
 ```
+
 Following this, we logged into the server using the newly created credentials
+
+ ServerLogin, sends a POST request to the API address with default values. It includes a JSON payload containing a username and password, it then prints the response JSON, extracts an access token from it, and returns it as an authorization header for future requests, typically used for privacy purposes.
 
 ```.py
 def serverLogin(ip="192.168.6.153", user={"username": "keelarina", "password": "iloveroky"}):
