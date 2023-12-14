@@ -250,7 +250,7 @@ if len(sensor_data) == 3:
    # Resets the dictionary
    sensor_data = {}
 ```
-Figure(_): CSV FILE Temp 1, Humidity 1, Temp 2, Humidity 2, Temp 3, Humidity 3
+Figure(_): CSV FILE Temp 1, Humidity 1, Temp 2, Humidity 2, Temp 3, Humidity 3, Time Uploaded/saved to CSV
 
 <img src ="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2010.32.10%20AM.png" width=35% height=35% >
 ## 5.Client Requested a 12 hour prediction sampled from the Data Collected the previous 48 hours.
