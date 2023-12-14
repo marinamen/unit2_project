@@ -49,7 +49,9 @@ Considering the budgetary constrains of the client and the hardware requirements
 [^6]:Python Geeks. “Advantages of Python: Disadvantages of Python.” Python Geeks, 26 June 2021, https://pythongeeks.org/advantages-disadvantages-of-python/. 
 [^7]: Real Python. “Python vs C++: Selecting the Right Tool for the Job.” Real Python, Real Python, 19 June 2021, https://realpython.com/python-vs-cpp/#memory-management. 
 [^8]:Note.mk. (n.d.). Try, except, else, finally in Python (exception handling). Try, except, else, finally in Python (Exception handling). https://note.nkmk.me/en/python-try-except-else-finally/ 
-
+[^9]:Team, G. L. (2023, November 8). Python numpy tutorial - 2024. Great Learning Blog: Free Resources what Matters to shape your Career! https://www.mygreatlearning.com/blog/python-numpy-tutorial/#:~:text=NumPy%20in%20Python%20is%20a,that%20can%20be%20used%20freely. 
+[^10]:
+[^11]:
 1. The solution provides a visual representation of the Humidity and Temperature values inside a dormitory (Local) and outside the house (Remote) for a period of minimum 48 hours. 
 1. ```[HL]``` The local variables will be measure using a set of 3 sensors around the dormitory.
 2. The solution provides a mathematical modelling for the Humidity and Temperature levels for each Local and Remote locations. ```(SL: linear model)```, ```(HL: non-lineal model)```
