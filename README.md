@@ -265,7 +265,7 @@ To ensure that the data from the indoor sensors is saved, the client requested t
 
 
 
-Figure (5.1)
+Figure (5.1) User created to access and login to the local server API
 ```.py
 user = {'username':"keelarina","password":"iloveroky"}
 #login
@@ -275,7 +275,7 @@ answer = requests.post(f'http://{ip}/login', json=user)
 print(answer.json())
 cookie = answer.json()["access_token"]
 ```
-Figure (5.2)
+Figure (5.2) This code reads data from a serial port connected to an Arduino for the number of values that the ardunio takes. It decodes the binary data into a string using UTF-8 encoding and prints the resulting decoded data.
 ```.py
 while line <= samples:
  
@@ -290,7 +290,7 @@ while line <= samples:
    # Prints decoded data
    print(decoded_data)
 ```
-Figure(5.3)
+Figure(5.3) This code appends the temperature and humidity values from three sensors, along with a timestamp, to a CSV file. It then logs into a local server, obtains an access token (cookie), and uploads the sensor readings for each sensor
 ```.py
 if len(sensor_data) == 3:
    with open(fileName, "a") as file:
