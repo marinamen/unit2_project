@@ -383,3 +383,5 @@ def serverLogin(ip="192.168.6.153", user={"username": "keelarina", "password": "
 # Criteria D: Functionality
 
 A 7 min video demonstrating the proposed solution with narration
+
+[click here](https://drive.google.com/drive/u/0/folders/1wc02hAbefVOhRh0PKFGidpggd4kH6zbF)
