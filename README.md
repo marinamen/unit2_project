@@ -126,6 +126,7 @@ _TOK Connection: To what extent does ```the use of data science``` in climate re
 
 ## Flow Chart
 *Simple*
+
 *Medium*
 
 <img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-13%20at%2011.50.20.png" width=75% height=75%>
