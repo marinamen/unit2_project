@@ -232,11 +232,11 @@ Fig2.2 Displays the subsequent 12 hour using Polynomial fitting at 3rd degree fo
 
 
 ## 4.Client Requested two copies of Data Collected, one in a local CSV and the second uploaded realtime to API Server.
-To ensure that the data from the indoor sensors is saved, the client requested that the data be kept in a CSV along with being uploaded to a local server API. Using the library date time we can track every time mark it uploads to the server. We did this by creating a user with the local server and gaining a cookie access token. The cookie allowed us to add data to the server. The purpose of using a cookie to log in was to maintain security and prevent unauthorized access. Figure (_) Next, we implemented a while loop in our program to continuously check for data from the Arduino. The data was decoded using a UTF 8 decoder that utilized the ASCII table.Figure(_) The program then used an if statement to check if the line contained any sensor data. The sensor data under the sensor ID was then stored in a dictionary where the keys were the sensor number, and the values were Temperature and Humidity. Now, using an if statement, for every sensor data length equal to three. The values of that sensor were put into the local server under that sensor ID, along with the sensor values being appended to the CSV file and with time stamps. Once those values are put into the server/CSV the dictionary resets and takes the next line of data from the Ardunio. See Figure(_)
+To ensure that the data from the indoor sensors is saved, the client requested that the data be kept in a CSV along with being uploaded to a local server API. Using the library date time we can track every time mark it uploads to the server. We did this by creating a user with the local server and gaining a cookie access token. The cookie allowed us to add data to the server. The purpose of using a cookie to log in was to maintain security and prevent unauthorized access. Figure (5.1) Next, we implemented a while loop in our program to continuously check for data from the Arduino. The data was decoded using a UTF 8 decoder that utilized the ASCII table.Figure(5.2) The program then used an if statement to check if the line contained any sensor data. The sensor data under the sensor ID was then stored in a dictionary where the keys were the sensor number, and the values were Temperature and Humidity. Now, using an if statement, for every sensor data length equal to three. The values of that sensor were put into the local server under that sensor ID, along with the sensor values being appended to the CSV file and with time stamps. Once those values are put into the server/CSV the dictionary resets and takes the next line of data from the Ardunio. See Figure(5.3)
 
 
 
-Figure (_)
+Figure (5.1)
 ```.py
 user = {'username':"keelarina","password":"iloveroky"}
 #login
@@ -246,7 +246,7 @@ answer = requests.post(f'http://{ip}/login', json=user)
 print(answer.json())
 cookie = answer.json()["access_token"]
 ```
-Figure (_)
+Figure (5.2)
 ```.py
 while line <= samples:
  
@@ -261,7 +261,7 @@ while line <= samples:
    # Prints decoded data
    print(decoded_data)
 ```
-Figure(_)
+Figure(5.3)
 ```.py
 if len(sensor_data) == 3:
    with open(fileName, "a") as file:
