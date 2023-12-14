@@ -439,7 +439,7 @@ plt.legend()
 plt.title("Humidity Outdoor Sensors")
 ```
 Figure(6.2) This is one of the average graphs for the sensors. It's important to note the minimum an maximum lines which represent the minimum lows and the maximum highs. 
-
+<img src = "https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%207.24.48%20PM.png" width=35% height=35%>
 
 
 
