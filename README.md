@@ -394,7 +394,7 @@ Fig5.2 Displays the subsequent 12 hours, with errorbars.
 ## 6.Client Requested a visual representation of Data collected, both locally and remotely.
 To fulfill the client's request for a visual representation of the data. Since all the data of both indoor and outdoor data, was on the server. We used the get sensor function which accesses the local server's readings through get requests and then outputs the data for the specific sensor. Figure(6.1) Using this we’re able to take all the indoor sensors and outdoor sensors for temperature and humidity and create a graph using Matplot Library to help illustrate the values over the 48-hour period. Once we call all the sensor data from the server, we create a subplot to generate our graph. In the subplot, we set up the x and y axis to the appropriate measurement and time. We then used the library NumPY, a library that works with arrays, to create the average value for each of the indoor and outdoor temp and humidity sensors. The values for each sensor were also graphed.Figure code (6.2)Figure graph (6.3) IMPORTANT NOTE: THE SECOND OUTDOOR SENSOR WAS BROKEN SO THE VALUES ARE NOT GRAPHED.
 
-The average graphs were also used to create median, maximum, and minimum lines. Using the libraries numpy and 
+The average graphs also had median, maximum, and minimum lines. The median is the value in the middle of the dataset. The maximum is the largest value in the data set. The minimum value is the lowest value in the data set.
 
 
 Figure(6.1) This is the function that took the sensor readings from the API
@@ -475,10 +475,11 @@ plt.plot(averageHO, color="#f89cc4", linewidth=2, label="Average",linestyle ='-.
 plt.legend()
 plt.title("Humidity Outdoor Sensors")
 ```
-Figure(6.2) This is one of the average graphs for the sensors. It's important to note the minimum an maximum lines which represent the minimum lows and the maximum highs.
+Figure(6.3) This is one of the average graphs for the sensors. It's important to note the minimum an maximum lines which represent the minimum value and the maximum value in the data set.
 
 <img src = "https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%207.24.48%20PM.png" width=90% height=90%>
 
+Figure(6.4) This graph displays the median line for the graph of the outdoor humidity sensors. To calculate the average only two sensors were used because the second sensor was broken.
 
 
 ## 7.Login and Register System
