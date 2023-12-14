@@ -54,7 +54,7 @@ Considering the budgetary constrains of the client and the hardware requirements
 [^7]: Real Python. “Python vs C++: Selecting the Right Tool for the Job.” Real Python, Real Python, 19 June 2021, https://realpython.com/python-vs-cpp/#memory-management. 
 [^8]:Note.mk. (n.d.). Try, except, else, finally in Python (exception handling). Try, except, else, finally in Python (Exception handling). https://note.nkmk.me/en/python-try-except-else-finally/ 
 [^9]:Team, G. L. (2023, November 8). Python numpy tutorial - 2024. Great Learning Blog: Free Resources what Matters to shape your Career! https://www.mygreatlearning.com/blog/python-numpy-tutorial/#:~:text=NumPy%20in%20Python%20is%20a,that%20can%20be%20used%20freely. 
-[^10]:
+[^10]:Team, G. L. (2023, November 8). Python numpy tutorial - 2024. Great Learning Blog: Free Resources what Matters to shape your Career! https://www.mygreatlearning.com/blog/python-numpy-tutorial/#:~:text=NumPy%20in%20Python%20is%20a,that%20can%20be%20used%20freely. 
 [^11]:
 1. The solution provides a visual representation of the Humidity and Temperature values inside a dormitory (Local) and outside the house (Remote) for a period of minimum 48 hours. 
 1. ```[HL]``` The local variables will be measure using a set of 3 sensors around the dormitory.
@@ -132,7 +132,7 @@ _TOK Connection: To what extent does ```the use of data science``` in climate re
 *Simple*
 
 <img src="https://github.com/marinamen/unit2_project/blob/main/images/Comp-33.jpg" width=65% height=65%>
-Fig.2.1: The flowchart describes an authentication process using the 'requests' library. It starts with server login using user credentials, then posts to an API '/login' endpoint. The response is saved, and an access token from this is stored in a cookie, which is then displayed before the process ends.
+Fig.3: The flowchart describes an authentication process using the 'requests' library. It starts with server login using user credentials, then posts to an API '/login' endpoint. The response is saved, and an access token from this is stored in a cookie, which is then displayed before the process ends.
 
 
 *Medium*
@@ -421,7 +421,7 @@ plt.errorbar(x_pred,y_quad,2.5,color='#ffc200')
 Fig5.2 Displays the subsequent 12 hours, with errorbars.
 
 ## 6.Client Requested a visual representation of Data collected, both locally and remotely.
-To fulfill the client's request for a visual representation of the data. Since all the data of both indoor and outdoor data, was on the server. We used the get sensor function which accesses the local server's readings through get requests and then outputs the data for the specific sensor. Figure(6.1) Using this we’re able to take all the indoor sensors and outdoor sensors for temperature and humidity and create a graph using Matplot Library to help illustrate the values over the 48-hour period. Once we call all the sensor data from the server, we create a subplot to generate our graph. In the subplot, we set up the x and y axis to the appropriate measurement and time. We then used the library NumPY, a library that works with arrays, to create the average value for each of the indoor and outdoor temp and humidity sensors. The values for each sensor were also graphed.Figure code (6.2)Figure graph (6.3) 
+To fulfill the client's request for a visual representation of the data. Since all the data of both indoor and outdoor data, was on the server. We used the get sensor function which accesses the local server's readings through get requests and then outputs the data for the specific sensor. Figure(6.1) Using this we’re able to take all the indoor sensors and outdoor sensors for temperature and humidity and create a graph using Matplot Library to help illustrate the values over the 48-hour period. Once we call all the sensor data from the server, we create a subplot to generate our graph. In the subplot, we set up the x and y axis to the appropriate measurement and time. We then used the library NumPY, a library that works with arrays[^10], to create the average value for each of the indoor and outdoor temp and humidity sensors. The values for each sensor were also graphed.Figure code (6.2)Figure graph (6.3) 
 IMPORTANT NOTE: THE SECOND OUTDOOR SENSOR WAS BROKEN SO THE VALUES ARE NOT GRAPHED.
 
 The average graphs also had median, maximum, and minimum lines. The median is the value in the middle of the dataset. The maximum is the largest value in the data set. The minimum value is the lowest value in the data set.
