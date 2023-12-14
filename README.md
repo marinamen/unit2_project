@@ -229,7 +229,7 @@ Next, `y_poly` computes polynomial values using optimized parameters popt for ex
 y_poly = polynomial_model(x_extended, *popt)
 ```
 
-<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2001.20.36.png" width=65% height=65%>
+<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2008.08.42.png" width=65% height=65%>
 
 *Fig.2.1*
 
