@@ -273,6 +273,7 @@ if len(sensor_data) == 3:
 
 
 ## 4.Client Requested two copies of Data Collected, one in a local CSV and the second uploaded realtime to API Server.
+
 To ensure that the data from the indoor sensors is saved, the client requested that the data be kept in a CSV along with being uploaded to a local server API. Using the library date time we can track every time mark it uploads to the server. We did this by creating a user with the local server and gaining a cookie access token. The cookie allowed us to add data to the server. The purpose of using a cookie to log in was to maintain security and prevent unauthorized access. Figure (5.1) Next, we implemented a while loop in our program to continuously check for data from the Arduino. The data was decoded using a UTF 8 decoder that utilized the ASCII table.Figure(5.2) The program then used an if statement to check if the line contained any sensor data. The sensor data under the sensor ID was then stored in a dictionary where the keys were the sensor number, and the values were Temperature and Humidity. Now, using an if statement, for every sensor data length equal to three. The values of that sensor were put into the local server under that sensor ID, along with the sensor values being appended to the CSV file and with time stamps. Once those values are put into the server/CSV the dictionary resets and takes the next line of data from the Ardunio. See Figure(5.3)
 
 
@@ -352,10 +353,38 @@ if len(sensor_data) == 3:
 Figure(5.4): CSV FILE Temp 1, Humidity 1, Temp 2, Humidity 2, Temp 3, Humidity 3, Time Uploaded/saved to CSV
 
 <img src ="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2010.32.10%20AM.png" width=35% height=35% >
+
+
 ## 5.Client Requested a 12 hour prediction sampled from the Data Collected the previous 48 hours.
 >We used two methods to predict data, here we'll talk about the second.Using the data recorded between the 24th and 36th hour, we projected the temperature and humidity for the upcoming 12 hours, incorporating a margin of error at 2.5% for temperature and a range of ±2.5% for humidity. This margin was determined by evaluating the variance in historical data and the accuracy of past predictions. To visually convey this uncertainty, we utilized plt.fill_between and plt.errorbar functions, providing a clear graphical representation of the expected range. This approach effectively meets criteria 5 by ensuring the client has a tangible understanding of the potential fluctuations in the environment. The
 
 **Temperature Prediction**
+
+
+It starts by initializing empty lists pred_12l and pred_12h, as well as an empty list x_pred. It then iterates 144 times, calculating values for pred_12h and pred_12l based on elements from an existing list averageTI, these values are modified by scaling factors and added to their respective lists.
+
+
+```.py
+pred_12l = []
+pred_12h = []
+x_pred = []
+fig = plt.figure(figsize=(10, 6))
+grid = GridSpec(2, 4, figure=fig)
+
+for i in range(144):  
+    pred_12h.append(averageTI[
+      i + 144] * 1.045)  
+    pred_12l.append(averageTI[i + 144] * 0.955)
+```
+Moving on, the variable `x_pred` is populated with values, calculated as i divided by 12 in a loop ranging from 0 to 143. These values are used to create a filled region between two curves defined by `pred_12l` and pred_12h using `plt.fill_between.` Additionally, a line plot is drawn using plt.plot with data from `averageTI[144:288]`.
+
+```.py
+    x_pred.append(i / 12)
+plt.fill_between(x_pred, pred_12l, pred_12h, alpha=.5, linewidth=0)
+plt.plot(x_pred, averageTI[144:288], linewidth=2,color="#0090d2")
+```
+
+
 
 <img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2008.08.08.png" width=65% height=65%>
 Fig5.1 Displays the subsequent 12 hour Linear prediction for the Indoor Temperature
@@ -392,7 +421,8 @@ plt.errorbar(x_pred,y_quad,2.5,color='#ffc200')
 Fig5.2 Displays the subsequent 12 hours, with errorbars.
 
 ## 6.Client Requested a visual representation of Data collected, both locally and remotely.
-To fulfill the client's request for a visual representation of the data. Since all the data of both indoor and outdoor data, was on the server. We used the get sensor function which accesses the local server's readings through get requests and then outputs the data for the specific sensor. Figure(6.1) Using this we’re able to take all the indoor sensors and outdoor sensors for temperature and humidity and create a graph using Matplot Library to help illustrate the values over the 48-hour period. Once we call all the sensor data from the server, we create a subplot to generate our graph. In the subplot, we set up the x and y axis to the appropriate measurement and time. We then used the library NumPY, a library that works with arrays, to create the average value for each of the indoor and outdoor temp and humidity sensors. The values for each sensor were also graphed.Figure code (6.2)Figure graph (6.3) IMPORTANT NOTE: THE SECOND OUTDOOR SENSOR WAS BROKEN SO THE VALUES ARE NOT GRAPHED.
+To fulfill the client's request for a visual representation of the data. Since all the data of both indoor and outdoor data, was on the server. We used the get sensor function which accesses the local server's readings through get requests and then outputs the data for the specific sensor. Figure(6.1) Using this we’re able to take all the indoor sensors and outdoor sensors for temperature and humidity and create a graph using Matplot Library to help illustrate the values over the 48-hour period. Once we call all the sensor data from the server, we create a subplot to generate our graph. In the subplot, we set up the x and y axis to the appropriate measurement and time. We then used the library NumPY, a library that works with arrays, to create the average value for each of the indoor and outdoor temp and humidity sensors. The values for each sensor were also graphed.Figure code (6.2)Figure graph (6.3) 
+IMPORTANT NOTE: THE SECOND OUTDOOR SENSOR WAS BROKEN SO THE VALUES ARE NOT GRAPHED.
 
 The average graphs also had median, maximum, and minimum lines. The median is the value in the middle of the dataset. The maximum is the largest value in the data set. The minimum value is the lowest value in the data set.
 
