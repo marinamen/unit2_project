@@ -126,6 +126,9 @@ _TOK Connection: To what extent does ```the use of data science``` in climate re
 
 ## Flow Chart
 *Simple*
+<img src="https://github.com/marinamen/unit2_project/blob/main/images/Comp-33.jpg" width=75% height=75%>
+Fig.2.1: The flowchart describes an authentication process using the 'requests' library. It starts with server login using user credentials, then posts to an API '/login' endpoint. The response is saved, and an access token from this is stored in a cookie, which is then displayed before the process ends.
+
 
 *Medium*
 
