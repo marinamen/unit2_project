@@ -355,6 +355,90 @@ Figure(5.4): CSV FILE Temp 1, Humidity 1, Temp 2, Humidity 2, Temp 3, Humidity 3
 ## 5.Client Requested a 12 hour prediction sampled from the Data Collected the previous 48 hours.
 
 ## 6.Client Requested a visual representation of Data collected, both locally and remotely.
+To fulfill the client's request for a visual representation of the data. Since all the data of both indoor and outdoor data, was on the server. We used the get sensor function which accesses the local server's readings through get requests and then outputs the data for the specific sensor. Figure(6.1) Using this we’re able to take all the indoor sensors and outdoor sensors for temperature and humidity and create a graph using Matplot Library to help illustrate the values over the 48-hour period. Once we call all the sensor data from the server, we create a subplot to generate our graph. In the subplot, we set up the x and y axis to the appropriate measurement and time. We then used the library NumPY, a library that works with arrays, to create the average value for each of the indoor and outdoor temp and humidity sensors. The values for each sensor were also graphed.Figure code (6.2)Figure graph (6.3) IMPORTANT NOTE: THE SECOND OUTDOOR SENSOR WAS BROKEN SO THE VALUES ARE NOT GRAPHED.
+
+The average graphs were also used to create median, maximum, and minimum lines. Using the libraries numpy and 
+
+
+Figure(6.1) This is the function that took the sensor readings from the API
+```.py
+def get_sensor(id: int = 1, ip: str = "192.168.6.153"):
+   request = requests.get(f'http://{ip}/readings', )
+   data = request.json()
+   sensors = data['readings'][0]
+   sensor = []
+   for s in sensors:
+       if s['sensor_id'] == id:
+           sensor.append(s['value'])
+   return sensor
+
+
+
+
+
+
+# DTH11 1- Indoor
+t1 = get_sensor(80)
+h1 = get_sensor(75)
+# DTH11 2- Indoor
+t2 = get_sensor(76)
+h2 = get_sensor(77)
+# DTH11 3 - Indoor
+t3 = get_sensor(78)
+h3 = get_sensor(79)
+
+
+# DTH11 1- Outdoor
+to1 = get_sensor(1)
+ho1 = get_sensor(4)
+# DTH11 3 - Outdoor
+to3 = get_sensor(2)
+ho3 = get_sensor(5)
+```
+
+Figure(6.2) This is the code that was used to graph the plots of each sensor temperature/humidity indoor and outdoor,s along with the average.
+```.py
+fig = plt.figure(figsize=(10, 6))
+grid = GridSpec(2, 4, figure=fig)
+
+
+plt.subplots_adjust(wspace=.5)
+
+
+tempIndoor = fig.add_subplot(grid[:, :])
+
+
+plt.ylim([5, 90])
+plt.xlim([0, 596])
+
+
+
+
+plt.plot(ho1, color="#0090d2",label="Sensor 2")
+plt.plot(ho3,color="#d0f2ef",label="Sensor 3")
+plt.xlabel("Time (hours)")
+plt.ylabel("Humidity (%)")
+num_data_points = len(t1)
+time_ticks = np.arange(0, num_data_points, 60)  # Ticks every 10 hours
+time_labels = [f"{i*5//60} hours" for i in range(0, num_data_points, 60)]
+ticker.NullFormatter()
+plt.grid()
+
+
+
+
+plt.xticks(time_ticks, time_labels)
+
+
+
+
+
+
+plt.plot(averageHO, color="#f89cc4", linewidth=2, label="Average",linestyle ='-.')
+plt.legend()
+plt.title("Humidity Outdoor Sensors")
+```
+Figure(6.2) This is one of the average graphs for the sensors. It's important to note the minimum an maximum lines which represent the minimum lows and the maximum highs. 
 
 
 
