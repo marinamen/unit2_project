@@ -353,6 +353,43 @@ Figure(5.4): CSV FILE Temp 1, Humidity 1, Temp 2, Humidity 2, Temp 3, Humidity 3
 
 <img src ="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2010.32.10%20AM.png" width=35% height=35% >
 ## 5.Client Requested a 12 hour prediction sampled from the Data Collected the previous 48 hours.
+>We used two methods to predict data, here we'll talk about the second.Using the data recorded between the 24th and 36th hour, we projected the temperature and humidity for the upcoming 12 hours, incorporating a margin of error at 2.5% for temperature and a range of ±2.5% for humidity. This margin was determined by evaluating the variance in historical data and the accuracy of past predictions. To visually convey this uncertainty, we utilized plt.fill_between and plt.errorbar functions, providing a clear graphical representation of the expected range. This approach effectively meets criteria 5 by ensuring the client has a tangible understanding of the potential fluctuations in the environment. The
+
+**Temperature Prediction**
+
+<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2008.08.08.png" width=65% height=65%>
+Fig5.1 Displays the subsequent 12 hour Linear prediction for the Indoor Temperature
+
+
+**Humidity Prediction**
+
+This snippet predicts high and low humidity levels for a 12-hour period. For each hour, it calculates the high estimate by increasing the average historical humidity `averageHI` by 20%, and the low estimate by reducing it by 20%, it also tracks the time in hours for y axis
+
+```.py
+predHumh = []
+predHuml = []
+x_pred = []
+
+
+for i in range(144):  # 576 readings for 48 hours-> 144 for 12h
+    predHumh.append(averageHI[
+                                         i + 144] * 1.2)  
+    predHuml.append(averageHI[i + 144] * 0.8)
+    x_pred.append(i / 12)
+```
+
+Next,its a quadratic polynomial to a subset of historical humidity data `averageHI`, then calculates and plots the fitted values (y_quad) against x_pred, representing time. It also visualizes the potential error in predictions using an error bar with a fixed value of 2.5 margin
+
+```.py
+y_quad = []
+p0, p1, p2 = np.polyfit(x_pred, averageHI[288:(288 + len(x_pred))], 2)  # 2 means power of 2
+for i in x_pred:
+    y_quad.append(p0 * (i ** 2) + p1 * i + p2)
+plt.plot(x_pred, y_quad, color="#0090d2")
+plt.errorbar(x_pred,y_quad,2.5,color='#ffc200')
+```
+<img src="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%2008.07.59.png" width=35% height=35%>
+Fig5.2 Displays the subsequent 12 hours, with errorbars.
 
 ## 6.Client Requested a visual representation of Data collected, both locally and remotely.
 To fulfill the client's request for a visual representation of the data. Since all the data of both indoor and outdoor data, was on the server. We used the get sensor function which accesses the local server's readings through get requests and then outputs the data for the specific sensor. Figure(6.1) Using this we’re able to take all the indoor sensors and outdoor sensors for temperature and humidity and create a graph using Matplot Library to help illustrate the values over the 48-hour period. Once we call all the sensor data from the server, we create a subplot to generate our graph. In the subplot, we set up the x and y axis to the appropriate measurement and time. We then used the library NumPY, a library that works with arrays, to create the average value for each of the indoor and outdoor temp and humidity sensors. The values for each sensor were also graphed.Figure code (6.2)Figure graph (6.3) IMPORTANT NOTE: THE SECOND OUTDOOR SENSOR WAS BROKEN SO THE VALUES ARE NOT GRAPHED.
