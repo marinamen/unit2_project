@@ -481,7 +481,7 @@ Figure(6.3) This is one of the average graphs for the sensors. It's important to
 
 Figure(6.4) This graph displays the median line for the graph of the outdoor humidity sensors. To calculate the average only two sensors were used because the second sensor was broken.
 
-<img src ="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%203.02.07%20PM.png" width=90% height=90>
+<img src ="https://github.com/marinamen/unit2_project/blob/main/images/Screenshot%202023-12-14%20at%203.02.07%20PM.png" width=35% height=35>
 ## 7.Login and Register System
 
 The UWC ISAK Weather Station Server operates under specific rules and terminations. 
